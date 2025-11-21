@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import InsertionSortViz from './components/InsertionSortViz';
+import NeonSortViz from './components/NeonSortViz';
 
 const App: React.FC = () => {
   const [algorithm, setAlgorithm] = useState<'insertion' | 'bubble'>('insertion');
@@ -29,7 +29,7 @@ const App: React.FC = () => {
 
   return (
     <div className="w-full min-h-screen bg-slate-950 text-white selection:bg-cyan-500 selection:text-white overflow-x-hidden">
-      <InsertionSortViz algorithm={algorithm} onNavigate={navigate} />
+      <NeonSortViz algorithm={algorithm} onNavigate={navigate} />
     </div>
   );
 };

@@ -303,8 +303,8 @@ const SortingViz: React.FC<SortingVizProps> = ({ algorithm, onNavigate }) => {
     switch (state) {
       case BarState.Active: // Cyan / Key
         return 'bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.6)] z-20 scale-105 ring-2 ring-cyan-200';
-      case BarState.Compare: // Blue / Compare
-        return 'bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.6)] z-10';
+      case BarState.Compare: // Rose / Compare
+        return 'bg-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.6)] z-10';
       case BarState.Overwrite:
         return 'bg-teal-400 opacity-80'; // Changed from violet to teal
       case BarState.Sorted: // Emerald / Sorted
@@ -329,7 +329,7 @@ const SortingViz: React.FC<SortingVizProps> = ({ algorithm, onNavigate }) => {
               ALGORITMO {algorithm === 'insertion' ? 'INSERTION' : 'BUBBLE'}
             </span>
             <span className="mx-2 text-slate-700">|</span>
-            <span className="text-slate-500">O(n²) COMPLESSITÀ</span>
+            <span className="text-slate-500">COMPLESSITÀ O(n²)</span>
           </div>
         </div>
         
@@ -413,14 +413,14 @@ const SortingViz: React.FC<SortingVizProps> = ({ algorithm, onNavigate }) => {
             {/* Speed Slider */}
             <div className="space-y-2">
                 <div className="flex justify-between text-xs uppercase tracking-wider font-bold text-slate-500">
-                    <span className="flex items-center gap-1"><Zap size={14} /> Velocità</span>
+                    <span className="flex items-center gap-1"><Zap size={29} /> Velocità</span>
                     <span>{speed}ms</span>
                 </div>
                 <input 
                     type="range" 
-                    min="10" 
+                    min="5" 
                     max="150" 
-                    step="10"
+                    step="5"
                     value={speed} 
                     onChange={(e) => setSpeed(Number(e.target.value))}
                     disabled={sorting}
@@ -448,13 +448,13 @@ const SortingViz: React.FC<SortingVizProps> = ({ algorithm, onNavigate }) => {
         </div>
 
         {/* Playback Controls */}
-        <div className="md:col-span-7 flex flex-col gap-4">
+        <div className="md:col-span-7 flex flex-col gap-3">
             
             <div className="flex gap-3 h-full">
                 <button 
                     onClick={generateArray}
                     disabled={sorting && !paused}
-                    className="flex-1 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-white rounded-xl flex flex-col items-center justify-center gap-2 transition-all group"
+                    className="flex-1 py-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-white rounded-xl flex flex-col items-center justify-center gap-2 transition-all group"
                 >
                     <RotateCcw size={24} className="group-hover:-rotate-180 transition-transform duration-500" />
                     <span className="text-xs font-bold uppercase tracking-widest">Resetta</span>
@@ -463,7 +463,7 @@ const SortingViz: React.FC<SortingVizProps> = ({ algorithm, onNavigate }) => {
                 {!sorting ? (
                     <button 
                         onClick={() => runSort(false)}
-                        className="flex-[2] bg-gradient-to-br from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl flex flex-col items-center justify-center gap-2 shadow-lg shadow-cyan-900/20 transition-all transform active:scale-95"
+                        className="flex-[2] py-2 bg-gradient-to-br from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl flex flex-col items-center justify-center gap-2 shadow-lg shadow-cyan-900/20 transition-all transform active:scale-95"
                     >
                         <Play size={32} fill="currentColor" />
                         <span className="text-xs font-bold uppercase tracking-widest">Avvia Sort</span>
@@ -472,15 +472,14 @@ const SortingViz: React.FC<SortingVizProps> = ({ algorithm, onNavigate }) => {
                     <>
                         <button 
                             onClick={togglePause}
-                            className="flex-[1.5] bg-slate-700 hover:bg-slate-600 text-white rounded-xl flex flex-col items-center justify-center gap-2 transition-all"
+                            className="flex-[1.5] py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl flex flex-col items-center justify-center gap-2 transition-all"
                         >
                             {paused ? <Play size={28} fill="currentColor" /> : <Pause size={28} fill="currentColor" />}
                             <span className="text-xs font-bold uppercase tracking-widest">{paused ? 'Riprendi' : 'Pausa'}</span>
                         </button>
-                        {/* Changed Stop button from Rose (Pink) to Slate/Red to fit Green/Blue theme request better */}
                         <button 
                             onClick={handleStop}
-                            className="flex-1 bg-slate-800 hover:bg-red-900/50 border border-slate-700 hover:border-red-800 text-slate-300 hover:text-red-200 rounded-xl flex flex-col items-center justify-center gap-2 transition-all"
+                            className="flex-1 py-2 bg-slate-800 hover:bg-red-900/50 border border-slate-700 hover:border-red-800 text-slate-300 hover:text-red-200 rounded-xl flex flex-col items-center justify-center gap-2 transition-all"
                         >
                             <div className="w-6 h-6 bg-current rounded-sm"></div>
                             <span className="text-xs font-bold uppercase tracking-widest">Stop</span>
@@ -516,7 +515,7 @@ const SortingViz: React.FC<SortingVizProps> = ({ algorithm, onNavigate }) => {
             <div className="w-3 h-3 rounded bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div> Attivo
          </div>
          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div> Confronto
+            <div className="w-3 h-3 rounded bg-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.6)]"></div> Confronto
          </div>
          <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div> Ordinato
