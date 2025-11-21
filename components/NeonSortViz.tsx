@@ -413,7 +413,7 @@ const SortingViz: React.FC<SortingVizProps> = ({ algorithm, onNavigate }) => {
             {/* Speed Slider */}
             <div className="space-y-2">
                 <div className="flex justify-between text-xs uppercase tracking-wider font-bold text-slate-500">
-                    <span className="flex items-center gap-1"><Zap size={29} /> Velocità</span>
+                    <span className="flex items-center gap-1"><Zap size={14} /> Velocità</span>
                     <span>{speed}ms</span>
                 </div>
                 <input 
